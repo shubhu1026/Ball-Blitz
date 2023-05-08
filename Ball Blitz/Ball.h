@@ -6,15 +6,22 @@
 #include<SFML/Audio.hpp>
 #include<SFML/Network.hpp>
 
+enum BallTypes { DEFAULT = 0, DAMAGING, HEALING, NROFTYPES };
+
 class Ball
 {
 private:
-	sf::CircleShape shape;
+	sf::CircleShape shape; 
+	int type;
 
-	void initShape();
+	void initShape(const sf::RenderWindow& window);
 public:
-	Ball();
+	Ball(const sf::RenderWindow& window, int type);
 	~Ball();
+
+	//Accessor
+	const sf::CircleShape getShape() const;
+	const int& getType() const;
 
 	//Functions
 	void update();
